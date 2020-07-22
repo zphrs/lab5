@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="lab5 for s14A2020. Create an account or log in to be able to post text to the home page.">
+    <title>Lab 4 - {{title}} </title>
+
+    <!-- Styles -->
+    {% block styles %}
+        <link href="{{ url_for('static', filename='./css/styles.css') }}" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+<!-- Content -->
+<div class=topnav>&nbsp
+    <a href="{{url_for('index')}}">Home</a>&nbsp&nbsp&nbsp&nbsp
+    <a href="{{ url_for('about') }}">About</a>&nbsp&nbsp&nbsp&nbsp
+    <a href="{{ url_for('login') }}">Login</a>&nbsp&nbsp&nbsp&nbsp
+    <a href="{{url_for('signup')}}">Sign Up</a>&nbsp&nbsp&nbsp&nbsp
+    <a href="{{url_for('newpost')}}">Make a Post</a>&nbsp
+</div>
+<br>
+{% block content %}
+{% endblock %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
+
+<!-- Scripts -->
+{% block scripts %}
+{% endblock %}
+</body>
+
+</html>
