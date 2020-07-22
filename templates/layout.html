@@ -6,7 +6,7 @@
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="lab5 for s14A2020. Create an account or log in to be able to post text to the home page.">
-    <title>Lab 4 - {{title}} </title>
+    <title>Lab 5 - {{title}} </title>
 
     <!-- Styles -->
     {% block styles %}
@@ -29,7 +29,7 @@
     {% if messages %}
     <ul class=flashes>
         {% for message in messages %}
-            <p>{{message}}</p>
+            <p class="form-error-message">{{message}}</p>
         {% endfor %}
     </ul>
     {% endif %}

@@ -10,19 +10,21 @@ import psycopg2
 import gunicorn
 from flask_heroku import Heroku
 import csv 
-passDict = {}
+postgresPassword = ''
 # opening the CSV file 
-with open('passwords.csv', mode ='r') as file:     
-         
-       # reading the CSV file 
-       passDict = csv.DictReader(file) 
+with open('passwords.csv', mode ='r') as file:
+    # reading the CSV file 
+    dictReader = csv.DictReader(file)
+    for row in dictReader:
+        dictReader = row
+    postgresPassword = dictReader['postgres']
 
 load_dotenv('.env')
 
 app = Flask(__name__)
 heroku = Heroku(app)
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:'+passDict[postgres]+'@localhost:5432/lab5'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:'+postgresPassword+'@localhost:5432/lab5'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = environ.get('SECRET_KEY')
 Db.init_app(app)
@@ -113,7 +115,7 @@ def newpost():
         if 'username' in session:
             return render_template('newpost.html', title='Newpost', form=form)
         else:
-            flash('Login before making an account.')
+            flash('Login before making a post.')
             return redirect(url_for('login'))
         
 
