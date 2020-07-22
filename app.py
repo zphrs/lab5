@@ -24,7 +24,7 @@ load_dotenv('.env')
 app = Flask(__name__)
 heroku = Heroku(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:'+postgresPassword+'@localhost:5432/lab5'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:'+postgresPassword+'@localhost:5432/lab5'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = environ.get('SECRET_KEY')
 Db.init_app(app)
