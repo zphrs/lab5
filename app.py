@@ -23,8 +23,8 @@ if not forHeroku:
 
     load_dotenv('.env')
 
-    app = Flask(__name__)
-    heroku = Heroku(app)
+app = Flask(__name__)
+heroku = Heroku(app)
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:'+postgresPassword+'@localhost:5432/lab5'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
