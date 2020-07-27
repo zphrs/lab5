@@ -21,7 +21,7 @@ if not forHeroku:
             dictReader = row
         postgresPassword = dictReader['postgres']
 
-    load_dotenv('.env')
+load_dotenv('.env')
 
 app = Flask(__name__)
 heroku = Heroku(app)
